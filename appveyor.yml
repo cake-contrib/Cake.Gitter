@@ -4,3 +4,13 @@ build_script:
  
 # Tests 
 test: off 
+
+#---------------------------------#
+#  notifications configuration    #
+#---------------------------------#
+notifications:
+  - provider: Webhook
+    url: https://webhooks.gitter.im/e/b0b28939e26fdff3f0ca
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: true
