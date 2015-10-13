@@ -2,7 +2,7 @@
 using Cake.Core;
 using Cake.Core.Annotations;
 
-namespace Cake.Slack
+namespace Cake.Gitter
 {
     /// <summary>
     /// Contains aliases related to GitterProvider API

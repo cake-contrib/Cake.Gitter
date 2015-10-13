@@ -1,6 +1,6 @@
 ﻿using Cake.Core;
 
-namespace Cake.Slack
+namespace Cake.Gitter
 {
     /// <summary>
     /// Contains functionality related to Gitter API
