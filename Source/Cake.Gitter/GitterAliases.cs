@@ -7,7 +7,7 @@ namespace Cake.Gitter
     /// <summary>
     /// Contains aliases related to GitterProvider API
     /// </summary>
-    [CakeAliasCategoryAttribute("Slack")]
+    [CakeAliasCategoryAttribute("Gitter")]
     public static class GitterAliases
     {
         /// <summary>

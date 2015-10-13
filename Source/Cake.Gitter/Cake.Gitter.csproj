@@ -24,6 +24,10 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>Cake.Gitter.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Debug\Cake.Gitter.XML</DocumentationFile>
+    <StartAction>Program</StartAction>
+    <StartArguments>$(TargetDir)gitter.cake -verbosity=diagnostic</StartArguments>
+    <StartWorkingDirectory>$(TargetDir)</StartWorkingDirectory>
+    <StartProgram>$(SolutionDir)..\Tools\Cake\cake.exe</StartProgram>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -53,23 +57,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chat\GitterChatApi.cs" />
+    <Compile Include="Chat\GitterChatMessageResult.cs" />
+    <Compile Include="Chat\GitterChatMessageSettings.cs" />
+    <Compile Include="Chat\GitterChatProvider.cs" />
     <Compile Include="GitterAliases.cs" />
     <Compile Include="GitterProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cake.Gitter.ruleset" />
+    <None Include="gitter.cake">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Chat\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-beta013\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-beta013\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

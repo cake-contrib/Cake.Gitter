@@ -1,4 +1,5 @@
 ﻿using Cake.Core;
+using Cake.Gitter.Chat;
 
 namespace Cake.Gitter
 {
@@ -7,7 +8,7 @@ namespace Cake.Gitter
     /// </summary>
     public sealed class GitterProvider
     {
-        private readonly object _chat;
+        private readonly GitterChatProvider _chat;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GitterProvider"/> class.
@@ -15,11 +16,11 @@ namespace Cake.Gitter
         /// <param name="context">The context.</param>
         public GitterProvider(ICakeContext context)
         {
-            _chat = new object();
+            _chat = new GitterChatProvider(context);
         }
 
         /// <summary>
-        /// The Slack Chat functionality.
+        /// The Gitter Chat functionality.
         /// </summary>
         public object Chat
         {
