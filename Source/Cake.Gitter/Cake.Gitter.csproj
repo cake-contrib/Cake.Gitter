@@ -28,6 +28,7 @@
     <StartArguments>$(TargetDir)gitter.cake -verbosity=diagnostic</StartArguments>
     <StartWorkingDirectory>$(TargetDir)</StartWorkingDirectory>
     <StartProgram>$(SolutionDir)..\Tools\Cake\cake.exe</StartProgram>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +38,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>Cake.Gitter.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cake.Common, Version=0.5.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -53,10 +55,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
     <Compile Include="Chat\GitterChatApi.cs" />
     <Compile Include="Chat\GitterChatMessageResult.cs" />
     <Compile Include="Chat\GitterChatMessageSettings.cs" />
