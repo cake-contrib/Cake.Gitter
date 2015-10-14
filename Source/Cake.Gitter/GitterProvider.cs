@@ -22,7 +22,7 @@ namespace Cake.Gitter
         /// <summary>
         /// The Gitter Chat functionality.
         /// </summary>
-        public object Chat
+        public GitterChatProvider Chat
         {
             get
             {
