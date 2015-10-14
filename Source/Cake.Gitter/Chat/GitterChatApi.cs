@@ -78,6 +78,8 @@ namespace Cake.Gitter.Chat
 
             using (var client = new WebClient())
             {
+                client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
                 var postBytes = Encoding.UTF8.GetBytes(string.Format("message={0}", message));
 
                 var resultBytes = client.UploadData(

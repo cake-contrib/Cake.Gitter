@@ -6,7 +6,7 @@ try
 {
     var postMessageResult = Gitter.Chat.PostMessage(
                 token:gitterToken,
-                message:"Test"
+                message:"Hello from Cake.Gitter API"
         );
 
     if (postMessageResult.Ok)
@@ -26,7 +26,7 @@ catch(Exception ex)
 try
 {
     var postMessageResult = Gitter.Chat.PostMessage(
-                message:"Test",
+                message:"Hello from Cake.Gitter WebHook",
                 messageSettings:new GitterChatMessageSettings { IncomingWebHookUrl = gitterWebHookUri }
         );
 
