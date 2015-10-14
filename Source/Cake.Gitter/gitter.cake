@@ -1,12 +1,13 @@
 #r "Cake.Gitter.dll"
 var gitterToken         = EnvironmentVariable("GITTER_TOKEN");
 var gitterWebHookUri    = EnvironmentVariable("gitterWebHookUri");
+var gitterRoomId        = EnvironmentVariable("gitterRoomId");
 
 try
 {
     var postMessageResult = Gitter.Chat.PostMessage(
-                token:gitterToken,
-                message:"Hello from Cake.Gitter API"
+                message:"Hello from Cake.Gitter API",
+				messageSettings:new GitterChatMessageSettings { Token = gitterToken, RoomId = gitterRoomId}
         );
 
     if (postMessageResult.Ok)

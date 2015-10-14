@@ -14,14 +14,14 @@ namespace Cake.Gitter.Chat
         public string Token { get; set; }
 
         /// <summary>
+        /// Gitter Room Id.
+        /// </summary>
+        public string RoomId { get; set; }
+
+        /// <summary>
         /// This can be used instead of token (https://developer.gitter.im/docs/rest-api)
         /// </summary>
         public string IncomingWebHookUrl { get; set; }
-
-        /// <summary>
-        /// Name of bot.
-        /// </summary>
-        public string UserName { get; set; }
 
         /// <summary>
         /// Optional flag for if should throw exception on failure

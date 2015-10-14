@@ -24,23 +24,7 @@ namespace Cake.Gitter.Chat
         /// <summary>
         /// Post message to Gitter Room
         /// </summary>
-        /// <param name="token">GitterProvider auth token</param>
-        /// <param name="text">Text of the message to send.
-        /// <returns>Returns success/error/timestamp <see cref="GitterChatMessageResult"/></returns>
-        [CakeAliasCategory("Chat")]
-        public GitterChatMessageResult PostMessage(
-            string token,
-            string message)
-        {
-            return _context.PostMessage(
-                message,
-                new GitterChatMessageSettings { Token = token });
-        }
-
-        /// <summary>
-        /// Post message to Gitter Room
-        /// </summary>
-        /// <param name="text">Text of the message to send.
+        /// <param name="message">The message to send.
         /// <returns>Returns success/error/timestamp <see cref="GitterChatMessageResult"/></returns>
         /// <param name="messageSettings">Lets you override default settings like UserName, IconUrl or if it should ThrowOnFail</param>
         [CakeAliasCategory("Chat")]
