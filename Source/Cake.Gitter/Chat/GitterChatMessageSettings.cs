@@ -1,5 +1,4 @@
-﻿using System;
-using Cake.Core.Annotations;
+﻿using Cake.Core.Annotations;
 
 namespace Cake.Gitter.Chat
 {

@@ -1,9 +1,8 @@
-﻿using Cake.Core.Annotations;
+﻿using System.Text;
+using Cake.Core.Annotations;
 
 namespace Cake.Gitter.Chat
 {
-    using System.Text;
-
     /// <summary>
     /// The result of GitterProvider Chat API post
     /// </summary>
