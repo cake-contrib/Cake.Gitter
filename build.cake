@@ -25,7 +25,7 @@ var assemblyInfo        = new AssemblyInfoSettings {
                                 Version                 = version,
                                 FileVersion             = version,
                                 InformationalVersion    = semVersion,
-                                Copyright               = string.Format("Copyright © gep13 {0}", DateTime.Now.Year),
+                                Copyright               = string.Format("Copyright Â© gep13 {0} - Present", DateTime.Now.Year),
                                 CLSCompliant            = true
                             };
 var nuGetPackSettings   = new NuGetPackSettings {
