@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using Cake.Common.Diagnostics;
 using Cake.Core;
+using Cake.Gitter.LitJson;
 
 namespace Cake.Gitter.Chat
 {
@@ -111,8 +112,24 @@ namespace Cake.Gitter.Chat
 
                 context.Debug("Result json: {0}", resultJson);
 
-                return null;
+                var result = JsonMapper.ToObject(resultJson);
+
+                var parsedResult = new GitterChatMessageResult(
+                    !string.IsNullOrWhiteSpace(result.GetString("id")),
+                    result.GetString("sent"),
+                    result.GetString("error"));
+
+                context.Debug("Result parsed: {0}", parsedResult);
+
+                return parsedResult;
             }
+        }
+
+        private static string GetString(this JsonData data, string key)
+        {
+            return (data != null && data.Keys.Contains(key))
+                ? (string)data[key]
+                : null;
         }
     }
 }
