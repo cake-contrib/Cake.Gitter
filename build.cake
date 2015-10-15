@@ -10,6 +10,7 @@ var configuration   = Argument<string>("configuration", "Release");
 ///////////////////////////////////////////////////////////////////////////////
 var isLocalBuild        = !AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
+var isDevelopBranch     = AppVeyor.Environment.Repository.Branch.Name == "develop";
 var solution            = "./Source/Cake.Gitter.sln";
 var solutionPath        = "./Source/Cake.Gitter";
 var sourcePath          = "./Source";
@@ -167,12 +168,22 @@ Task("Publish-MyGet")
     .Does(() =>
 {
     // Resolve the API key.
-    var apiKey = EnvironmentVariable("MYGET_API_KEY");
+	var apiKey = EnvironmentVariable("MYGET_DEVELOP_API_KEY");
+	if(!isDevelopBranch)
+	{
+		apiKey = EnvironmentVariable("MYGET_MASTER_API_KEY");
+	}
+
     if(string.IsNullOrEmpty(apiKey)) {
         throw new InvalidOperationException("Could not resolve MyGet API key.");
     }
 
-    var source = EnvironmentVariable("MYGET_SOURCE");
+    var source = EnvironmentVariable("MYGET_DEVELOP_SOURCE");
+	if(!isDevelopBranch)
+	{
+		source = EnvironmentVariable("MYGET_MASTER_SOURCE");
+	}
+
     if(string.IsNullOrEmpty(apiKey)) {
         throw new InvalidOperationException("Could not resolve MyGet source.");
     }

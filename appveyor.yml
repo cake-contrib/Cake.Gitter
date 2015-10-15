@@ -1,9 +1,19 @@
-#Build script 
-build_script: 
-  - ps: .\build.ps1 -Target AppVeyor 
- 
-# Tests 
-test: off 
+#Build script
+build_script:
+  - ps: .\build.ps1 -Target AppVeyor
+
+# Tests
+test: off
+
+environment:
+  MYGET_MASTER_API_KEY:
+    secure: 0TPZJG1sql+TBGDGbZlrEC8O80MAJserulZiU/8a+VTxjSgIZh/SoNhal/DeihIx
+  MYGET_DEVELOP_API_KEY:
+    secure: e0OciROS/831nZpT5AjH4oTeHurdWoouWDfw4YzD0AAONAgZTLh0Yw4slTnJT1y8
+  MYGET_MASTER_SOURCE:
+    secure: MJizIBsfdXz+JKhvzlgcmB0isLl+NNGcJVLkQu1a2ugj1bqo9FvxvzI6dohW6lZskdukxQiKO1iQ9ZdP2qbSZg==
+  MYGET_DEVELOP_SOURCE:
+    secure: MJizIBsfdXz+JKhvzlgcmB0isLl+NNGcJVLkQu1a2ug5WB1Jmqf37/i26f2jm/FsbLcIrRWNHzeLbSqvK+nOIQ==
 
 #---------------------------------#
 #  notifications configuration    #
