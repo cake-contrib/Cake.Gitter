@@ -10,10 +10,11 @@ var configuration   = Argument<string>("configuration", "Release");
 ///////////////////////////////////////////////////////////////////////////////
 var isLocalBuild        = !AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
-var solutions           = GetFiles("./**/*.sln");
-var solutionPaths       = solutions.Select(solution => solution.GetDirectory());
+var solution            = "./Source/Cake.Gitter.sln";
+var solutionPath        = "./Source/Cake.Gitter";
+var sourcePath          = "./Source";
 var binDir              = "./Source/Cake.Gitter/bin/" + configuration;
-var buildArtifacts      = "./BuildArtifacts/";
+var buildArtifacts      = "./BuildArtifacts";
 var version             = "0.1.0";
 var semVersion          = "0.1.0";
 
@@ -76,13 +77,9 @@ Teardown(() =>
 Task("Clean")
     .Does(() =>
 {
-    // Clean solution directories.
-    foreach(var path in solutionPaths)
-    {
-        Information("Cleaning {0}", path);
-        CleanDirectories(path + "/**/bin/" + configuration);
-        CleanDirectories(path + "/**/obj/" + configuration);
-    }
+    Information("Cleaning {0}", solutionPath);
+    CleanDirectories(solutionPath + "/**/bin/" + configuration);
+    CleanDirectories(solutionPath + "/**/obj/" + configuration);
 
 	Information("Cleaning BuildArtifacts");
 	CleanDirectories(buildArtifacts);
@@ -92,11 +89,8 @@ Task("Restore")
     .Does(() =>
 {
     // Restore all NuGet packages.
-    foreach(var solution in solutions)
-    {
-        Information("Restoring {0}...", solution);
-        NuGetRestore(solution);
-    }
+    Information("Restoring {0}...", solution);
+    NuGetRestore(solution);
 });
 
 Task("SolutionInfo")
@@ -112,18 +106,41 @@ Task("Build")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
     .IsDependentOn("SolutionInfo")
+    .IsDependentOn("DupFinder")
+	.IsDependentOn("InspectCode")
     .Does(() =>
 {
-    // Build all solutions.
-    foreach(var solution in solutions)
-    {
-        Information("Building {0}", solution);
-        MSBuild(solution, settings =>
-            settings.SetPlatformTarget(PlatformTarget.MSIL)
-                .WithProperty("TreatWarningsAsErrors","true")
-                .WithTarget("Build")
-                .SetConfiguration(configuration));
-    }
+    Information("Building {0}", solution);
+    MSBuild(solution, settings =>
+        settings.SetPlatformTarget(PlatformTarget.MSIL)
+            .WithProperty("TreatWarningsAsErrors","true")
+            .WithTarget("Build")
+            .SetConfiguration(configuration));
+});
+
+Task("DupFinder")
+	.IsDependentOn("Create-BuildArtifacts-Directory")
+    .Does(() =>
+{
+    // Run ReSharper's DupFinder
+    DupFinder(solution, new DupFinderSettings() {
+      ShowStats = true,
+      ShowText = true,
+      OutputFile = buildArtifacts + "/_ReSharperReports/dupfinder.xml",
+      ExcludePattern = new string[] { MakeAbsolute(File("./Source/Cake.Gitter/Include_T4Include.cs")).ToString() },
+      });
+});
+
+Task("InspectCode")
+	.IsDependentOn("Create-BuildArtifacts-Directory")
+    .Does(() =>
+{
+    // Run ReSharper's InspectCode
+    InspectCode(solution, new InspectCodeSettings() {
+      SolutionWideAnalysis = true,
+	  Profile = sourcePath + "/Cake.Gitter.sln.DotSettings",
+      OutputFile = buildArtifacts + "/_ReSharperReports/inspectcode.xml",
+      });
 });
 
 Task("Create-BuildArtifacts-Directory")
@@ -169,7 +186,6 @@ Task("Publish-MyGet")
         ApiKey = apiKey
     });
 });
-
 
 Task("Default")
     .IsDependentOn("Create-NuGet-Package");
