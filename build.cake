@@ -10,7 +10,7 @@ var configuration   = Argument<string>("configuration", "Release");
 ///////////////////////////////////////////////////////////////////////////////
 var isLocalBuild        = !AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
-var isDevelopBranch     = AppVeyor.Environment.Repository.Branch.Name == "develop";
+var isDevelopBranch     = AppVeyor.Environment.Repository.Branch == "develop";
 var solution            = "./Source/Cake.Gitter.sln";
 var solutionPath        = "./Source/Cake.Gitter";
 var sourcePath          = "./Source";

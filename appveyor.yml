@@ -5,6 +5,10 @@ build_script:
 # Tests
 test: off
 
+#---------------------------------#
+#  Environment Variables          #
+#---------------------------------#
+
 environment:
   MYGET_MASTER_API_KEY:
     secure: 0TPZJG1sql+TBGDGbZlrEC8O80MAJserulZiU/8a+VTxjSgIZh/SoNhal/DeihIx
@@ -24,3 +28,10 @@ notifications:
     on_build_success: true
     on_build_failure: true
     on_build_status_changed: true
+
+#---------------------------------#
+#  Build Cache                    #
+#---------------------------------#
+cache:
+- Source\packages -> Source\**\packages.config
+- Tools -> Tools\packages.config
