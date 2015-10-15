@@ -189,7 +189,7 @@ Task("Publish-MyGet")
     }
 
     // Get the path to the package.
-    var package = buildArtifacts + "Cake.Gitter." + semVersion + ".nupkg";
+    var package = buildArtifacts + "/Cake.Gitter." + semVersion + ".nupkg";
 
     // Push the package.
     NuGetPush(package, new NuGetPushSettings {
