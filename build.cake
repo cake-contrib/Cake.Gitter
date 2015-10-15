@@ -13,7 +13,7 @@ var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
 var solutions           = GetFiles("./**/*.sln");
 var solutionPaths       = solutions.Select(solution => solution.GetDirectory());
 var binDir              = "./Source/Cake.Gitter/bin/" + configuration;
-var nugetRoot           = "./nuget/";
+var buildArtifacts      = "./BuildArtifacts/";
 var version             = "0.1.0";
 var semVersion          = "0.1.0";
 
@@ -50,7 +50,7 @@ var nuGetPackSettings   = new NuGetPackSettings {
                                                                     new NuSpecContent {Source = "Cake.Gitter.xml"}
                                                                  },
                                 BasePath                = binDir,
-                                OutputDirectory         = nugetRoot
+                                OutputDirectory         = buildArtifacts
                             };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -83,6 +83,9 @@ Task("Clean")
         CleanDirectories(path + "/**/bin/" + configuration);
         CleanDirectories(path + "/**/obj/" + configuration);
     }
+
+	Information("Cleaning BuildArtifacts");
+	CleanDirectories(buildArtifacts);
 });
 
 Task("Restore")
@@ -123,16 +126,20 @@ Task("Build")
     }
 });
 
+Task("Create-BuildArtifacts-Directory")
+	.Does(() =>
+{
+    if (!DirectoryExists(buildArtifacts))
+    {
+        CreateDirectory(buildArtifacts);
+    }
+});
 
 Task("Create-NuGet-Package")
     .IsDependentOn("Build")
+	.IsDependentOn("Create-BuildArtifacts-Directory")
     .Does(() =>
 {
-    if (!DirectoryExists(nugetRoot))
-    {
-        CreateDirectory(nugetRoot);
-    }
-
     NuGetPack(nuGetPackSettings);
 });
 
@@ -154,7 +161,7 @@ Task("Publish-MyGet")
     }
 
     // Get the path to the package.
-    var package = nugetRoot + "Cake.Gitter." + semVersion + ".nupkg";
+    var package = buildArtifacts + "Cake.Gitter." + semVersion + ".nupkg";
 
     // Push the package.
     NuGetPush(package, new NuGetPushSettings {
