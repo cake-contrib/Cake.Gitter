@@ -8,10 +8,20 @@ using Cake.Gitter.LitJson;
 
 namespace Cake.Gitter.Chat
 {
+    /// <summary>
+    /// The actual worker for posting messages to Gitter
+    /// </summary>
     internal static class GitterChatApi
     {
-        const string PostMessageUri = "https://api.gitter.im/v1/rooms/{0}/chatMessages";
+        private const string PostMessageUri = "https://api.gitter.im/v1/rooms/{0}/chatMessages";
 
+        /// <summary>
+        /// Sends a message to Gitter, based on the provided settings
+        /// </summary>
+        /// <param name="context">The Cake Context</param>
+        /// <param name="message">The message to be sent</param>
+        /// <param name="messageSettings">The settings to be used when sending the message</param>
+        /// <returns>An instance of <see cref="GitterChatMessageResult"/> indicating success/failure</returns>
         internal static GitterChatMessageResult PostMessage(
             this ICakeContext context,
             string message,

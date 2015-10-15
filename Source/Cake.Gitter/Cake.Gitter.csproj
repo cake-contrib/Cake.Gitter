@@ -39,6 +39,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>Cake.Gitter.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>bin\Release\Cake.Gitter.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cake.Common, Version=0.5.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -67,6 +68,7 @@
     <Compile Include="Chat\GitterChatProvider.cs" />
     <Compile Include="GitterAliases.cs" />
     <Compile Include="GitterProvider.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Include_T4Include.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
