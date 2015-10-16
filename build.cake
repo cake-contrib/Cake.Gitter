@@ -11,7 +11,7 @@ var configuration   = Argument<string>("configuration", "Release");
 var isLocalBuild        = !AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
 var isDevelopBranch     = AppVeyor.Environment.Repository.Branch == "develop";
-var repoTag             = AppVeyor.Environment.Repository.Tag;
+var isTag               = AppVeyor.Environment.Repository.Tag.IsTag;
 var solution            = "./Source/Cake.Gitter.sln";
 var solutionPath        = "./Source/Cake.Gitter";
 var sourcePath          = "./Source";
@@ -175,12 +175,12 @@ Task("Publish-Nuget-Package")
 		apiKey = EnvironmentVariable("MYGET_MASTER_API_KEY");
 	}
 
-	if(string.IsNullOrEmpty(repoTag)) {
+	if(isTag) {
 		apiKey = EnvironmentVariable("NUGET_API_KEY");
 	}
 
     if(string.IsNullOrEmpty(apiKey)) {
-        throw new InvalidOperationException("Could not resolve MyGet API key.");
+        throw new InvalidOperationException("Could not resolve MyGet/Nuget API key.");
     }
 
     var source = EnvironmentVariable("MYGET_DEVELOP_SOURCE");
@@ -189,12 +189,12 @@ Task("Publish-Nuget-Package")
 		source = EnvironmentVariable("MYGET_MASTER_SOURCE");
 	}
 
-	if(string.IsNullOrEmpty(repoTag)) {
+	if(isTag) {
 		source = EnvironmentVariable("NUGET_SOURCE");
 	}
 
     if(string.IsNullOrEmpty(source)) {
-        throw new InvalidOperationException("Could not resolve MyGet source.");
+        throw new InvalidOperationException("Could not resolve MyGet/Nuget source.");
     }
 
     // Get the path to the package.
