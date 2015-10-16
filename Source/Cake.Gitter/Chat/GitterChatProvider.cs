@@ -27,6 +27,21 @@ namespace Cake.Gitter.Chat
         /// <param name="message">The message to send.</param>
         /// <param name="messageSettings">Lets you override default settings like UserName, IconUrl or if it should ThrowOnFail</param>
         /// <returns>Returns success/error/timestamp <see cref="GitterChatMessageResult"/></returns>
+        /// <example>
+        /// <code>
+        /// Gitter.Chat.PostMessage(message:"Hello from Cake.Gitter API, messageSettings:new GitterChatMessageSettings {
+        ///     Token              = "123456",
+        ///     RoomId             = "123456"
+        /// });
+        /// </code>
+        /// </example>
+        /// <example>
+        /// <code>
+        /// Gitter.Chat.PostMessage(message:"Hello from Cake.Gitter Web Hook, messageSettings:new GitterChatMessageSettings {
+        ///     IncomingWebHookUrl = "http://yourwebhookurl.net"
+        /// });
+        /// </code>
+        /// </example>
         [CakeAliasCategory("Chat")]
         public GitterChatMessageResult PostMessage(
             string message,
