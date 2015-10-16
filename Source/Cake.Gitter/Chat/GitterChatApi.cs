@@ -8,6 +8,8 @@ using Cake.Gitter.LitJson;
 
 namespace Cake.Gitter.Chat
 {
+    using System.Globalization;
+
     /// <summary>
     /// The actual worker for posting messages to Gitter
     /// </summary>
@@ -90,7 +92,7 @@ namespace Cake.Gitter.Chat
 
                 var parsedResult = new GitterChatMessageResult(
                     StringComparer.OrdinalIgnoreCase.Equals(result, "ok"),
-                    string.Empty,
+                    DateTime.UtcNow.ToString("u"),
                     StringComparer.OrdinalIgnoreCase.Equals(result, "ok") ? string.Empty : result);
 
                 context.Debug("Result parsed: {0}", parsedResult);

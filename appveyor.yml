@@ -8,7 +8,6 @@ test: off
 #---------------------------------#
 #  Environment Variables          #
 #---------------------------------#
-
 environment:
   MYGET_MASTER_API_KEY:
     secure: 0TPZJG1sql+TBGDGbZlrEC8O80MAJserulZiU/8a+VTxjSgIZh/SoNhal/DeihIx
@@ -18,9 +17,13 @@ environment:
     secure: MJizIBsfdXz+JKhvzlgcmB0isLl+NNGcJVLkQu1a2ugj1bqo9FvxvzI6dohW6lZskdukxQiKO1iQ9ZdP2qbSZg==
   MYGET_DEVELOP_SOURCE:
     secure: MJizIBsfdXz+JKhvzlgcmB0isLl+NNGcJVLkQu1a2ug5WB1Jmqf37/i26f2jm/FsbLcIrRWNHzeLbSqvK+nOIQ==
+  NUGET_API_KEY:
+    secure: a/xbTgIAc+QGdAwANmenmrUJFG5hqB+jMyqB6y80KZYXfRHOVEB+1dB4CEyDednf
+  NUGET_SOURCE:
+    secure: kc+ZLsNjHz3F35FkQc5DIdYehkISa+3+8s1b9dEP4BQ=
 
 #---------------------------------#
-#  notifications configuration    #
+#  Notifications Configuration    #
 #---------------------------------#
 notifications:
   - provider: Webhook
