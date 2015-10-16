@@ -1,4 +1,6 @@
-#Build script
+#---------------------------------#
+#  Build Script                   #
+#---------------------------------#
 build_script:
   - ps: .\build.ps1 -Target AppVeyor
 
