@@ -23,7 +23,7 @@ Come join in the conversation about ChocolateyGUI in our Gitter Chat Room
 
 #### Using Token
 
-```
+```csharp
 #addin "Cake.Slack"
 var gitterToken         = EnvironmentVariable("GITTER_TOKEN");
 var gitterRoomId        = EnvironmentVariable("gitterRoomId");
@@ -62,7 +62,7 @@ This will result in a message appearing in the Gitter Room similar to the follow
 
 #### Using Web Hook Url
 
-```
+```csharp
 #addin "Cake.Slack"
 var gitterWebHookUri    = EnvironmentVariable("gitterWebHookUri");
 try
