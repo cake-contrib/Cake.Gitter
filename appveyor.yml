@@ -16,7 +16,6 @@ environment:
   MYGET_DEVELOP_API_KEY:
     secure: e0OciROS/831nZpT5AjH4oTeHurdWoouWDfw4YzD0AAONAgZTLh0Yw4slTnJT1y8
   MYGET_MASTER_SOURCE: https://www.myget.org/F/packages_develop/
-    secure: MJizIBsfdXz+JKhvzlgcmB0isLl+NNGcJVLkQu1a2ugj1bqo9FvxvzI6dohW6lZskdukxQiKO1iQ9ZdP2qbSZg==
   MYGET_DEVELOP_SOURCE: https://www.myget.org/F/packages_master/
   NUGET_API_KEY:
     secure: a/xbTgIAc+QGdAwANmenmrUJFG5hqB+jMyqB6y80KZYXfRHOVEB+1dB4CEyDednf
