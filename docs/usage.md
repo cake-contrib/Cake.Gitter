@@ -1,47 +1,77 @@
-# Build Script
+# Post Message
 
-In order to make use of the Cake.ReSharperReports Addin, you will need to take advantage of the built-in support for executing both DupFinder and InspectCode.  You can find details of both of these [here](http://cakebuild.net/dsl/resharper).
-
-It is envisioned that the generating of HTML reports will only be required when a violation of the one of the rules in either DupFinder, or InspectCode has occurred.  As a result, an example build script would look something like this:
-
-## DupFinder
+## Using Token
 
 ```csharp
-Task("RunDupFinder")
-    .Does(() =>
+#addin "Cake.Slack"
+var gitterToken         = EnvironmentVariable("GITTER_TOKEN");
+var gitterRoomId        = EnvironmentVariable("gitterRoomId");
+
+try
 {
-	DupFinder(solution, new DupFinderSettings() {
-      ShowStats = true,
-      ShowText = true,
-      OutputFile = buildArtifacts + "/_ReSharperReports/dupfinder-output.xml",
-      });
-})
-.OnError(exception =>
+    var postMessageResult = Gitter.Chat.PostMessage(
+                message:"Hello from Cake.Gitter API",
+				        messageSettings:new GitterChatMessageSettings { Token = gitterToken, RoomId = gitterRoomId}
+        );
+
+    if (postMessageResult.Ok)
+    {
+        Information("Message {0} succcessfully sent", postMessageResult.TimeStamp);
+    }
+    else
+    {
+        Error("Failed to send message: {0}", postMessageResult.Error);
+    }
+}
+catch(Exception ex)
 {
-    ReSharperReports.Transform(
-		buildArtifacts + "/_ReSharperReports/dupfinder-output.xml", 
-		buildArtifacts + "/_ReSharperReports/dupfinder-output.html");
-});
+    Error("{0}", ex);
+}
 ```
 
-**NOTE:** In this example, the options for both ShowStats and ShowText are enabled.  In order for the generated HTML report to show all required information, these settings have to be enabled.
+Cake output will be similar to below:
 
-## InspectCode
+```
+Message 2015-10-16T11:18:14.078Z successfully sent
+```
+
+This will result in a message appearing in the Gitter Room similar to the following:
+
+![image](https://cloud.githubusercontent.com/assets/1271146/10540458/1c5fd648-7400-11e5-9529-1f3729850300.png)
+
+## Using Web Hook Url
 
 ```csharp
-Task("RunInspectCode")
-    .Does(() =>
+#addin "Cake.Slack"
+var gitterWebHookUri    = EnvironmentVariable("gitterWebHookUri");
+try
 {
-    InspectCode(solution, new InspectCodeSettings() {
-      SolutionWideAnalysis = true,
-	  Profile = sourcePath + "/ReSharperReports.sln.DotSettings",
-      OutputFile = buildArtifacts + "/_ReSharperReports/inspectcode-output.xml",
-      });
-})
-.OnError(exception =>
+    var postMessageResult = Gitter.Chat.PostMessage(
+                message:"Hello from Cake.Gitter WebHook",
+                messageSettings:new GitterChatMessageSettings { IncomingWebHookUrl = gitterWebHookUri }
+        );
+
+    if (postMessageResult.Ok)
+    {
+        Information("Message {0} succcessfully sent", postMessageResult.TimeStamp);
+    }
+    else
+    {
+        Error("Failed to send message: {0}", postMessageResult.Error);
+    }
+}
+catch(Exception ex)
 {
-    ReSharperReports.Transform(
-		buildArtifacts + "/_ReSharperReports/inspectcode-output.xml", 
-		buildArtifacts + "/_ReSharperReports/inspectcode-output.html");
-});
+    Error("{0}", ex);
+}
 ```
+
+Cake output will be similar to below:
+
+```
+Message 2015-10-16 11:26:23Z successfully sent
+```
+
+This will result in a message appearing in the Activity Feed for the Gitter Room similar to the following:
+
+![image](https://cloud.githubusercontent.com/assets/1271146/10540466/2eb1905c-7400-11e5-89ad-6e58b6b7508b.png)```
