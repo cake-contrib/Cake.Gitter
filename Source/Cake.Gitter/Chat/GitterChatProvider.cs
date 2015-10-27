@@ -43,18 +43,19 @@ namespace Cake.Gitter.Chat
         /// </code>
         /// </example>
         [CakeAliasCategory("Chat")]
-        public GitterChatMessageResult PostMessage(
-            string message,
-            GitterChatMessageSettings messageSettings)
+        public GitterChatMessageResult PostMessage(string message, GitterChatMessageSettings messageSettings)
         {
             if (messageSettings == null)
             {
                 throw new ArgumentNullException("messageSettings");
             }
 
-            return _context.PostMessage(
-                message,
-                messageSettings);
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                throw new NullReferenceException("Unable to send empty message.");
+            }
+
+            return _context.PostMessage(message, messageSettings);
         }
     }
 }
