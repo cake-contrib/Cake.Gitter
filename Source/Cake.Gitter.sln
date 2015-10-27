@@ -7,10 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Gitter", "Cake.Gitter\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildScripts", "BuildScripts", "{92E2BE01-BDEE-44AB-8463-3A8203A8717E}"
 	ProjectSection(SolutionItems) = preProject
-		..\appveyor.yml = ..\appveyor.yml
 		..\build.bat = ..\build.bat
 		..\build.cake = ..\build.cake
 		..\build.ps1 = ..\build.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppVeyor", "AppVeyor", "{26E8879A-6313-4C47-B646-DCDC96653F07}"
+	ProjectSection(SolutionItems) = preProject
+		..\appveyor.yml = ..\appveyor.yml
 	EndProjectSection
 EndProject
 Global
