@@ -24,6 +24,12 @@ namespace Cake.Gitter.Chat
         public string IncomingWebHookUrl { get; set; }
 
         /// <summary>
+        /// Gitter Message Level
+        /// </summary>
+        /// <remarks>Default is Info</remarks>
+        public GitterMessageLevel MessageLevel { get; set; }
+
+        /// <summary>
         /// Optional flag for if should throw exception on failure
         /// </summary>
         public bool? ThrowOnFail { get; set; }

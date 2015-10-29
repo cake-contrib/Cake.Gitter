@@ -44,7 +44,7 @@ namespace Cake.Gitter.Chat
             context.Verbose("Posting to incoming webhook {0}...", string.Concat(messageSettings.IncomingWebHookUrl.TrimEnd('/').Reverse().SkipWhile(c => c != '/').Reverse()));
 
             var gitterWebHookService = new WebhookService();
-            var result = gitterWebHookService.PostAsync(messageSettings.IncomingWebHookUrl, message);
+            var result = gitterWebHookService.PostAsync(messageSettings.IncomingWebHookUrl, message, messageSettings.MessageLevel == GitterMessageLevel.Error ? MessageLevel.Error : MessageLevel.Info);
 
             var parsedResult = new GitterChatMessageResult(result.Result, DateTime.UtcNow.ToString("u"), string.Empty);
 
