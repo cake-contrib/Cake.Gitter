@@ -114,6 +114,7 @@
     <Compile Include="Chat\GitterChatMessageResult.cs" />
     <Compile Include="Chat\GitterChatMessageSettings.cs" />
     <Compile Include="Chat\GitterChatProvider.cs" />
+    <Compile Include="Chat\GitterMessageLevel.cs" />
     <Compile Include="GitterAliases.cs" />
     <Compile Include="GitterProvider.cs" />
     <Compile Include="GlobalSuppressions.cs" />
