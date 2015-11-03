@@ -17,8 +17,8 @@ var solutionPath        = "./Source/Cake.Gitter";
 var sourcePath          = "./Source";
 var binDir              = "./Source/Cake.Gitter/bin/" + configuration;
 var buildArtifacts      = "./BuildArtifacts";
-var version             = "0.1.0";
-var semVersion          = "0.1.0";
+var version             = "0.2.0";
+var semVersion          = "0.2.0";
 
 var assemblyInfo        = new AssemblyInfoSettings {
                                 Title                   = "Cake.Gitter",
