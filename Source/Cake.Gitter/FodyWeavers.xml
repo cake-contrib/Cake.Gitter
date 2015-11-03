@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weavers>
+  <Costura>
+    <IncludeAssemblies>
+      GitterSharp.Configuration
+      GitterSharp.Helpers
+      GitterSharp.Model
+      GitterSharp.NetFramework
+      GitterSharp.Services
+      Newtonsoft.Json
+    </IncludeAssemblies>
+  </Costura>
+</Weavers>

@@ -28,6 +28,8 @@ namespace Cake.Gitter.Chat
         /// <param name="messageSettings">Lets you override default settings like UserName, IconUrl or if it should ThrowOnFail</param>
         /// <returns>Returns success/error/timestamp <see cref="GitterChatMessageResult"/></returns>
         /// <example>
+        /// <para>Post directly into a specified Gitter Room, using the RoomId and authorization Token.</para>
+        /// <para>Cake task:</para>
         /// <code>
         /// Gitter.Chat.PostMessage(message:"Hello from Cake.Gitter API, messageSettings:new GitterChatMessageSettings {
         ///     Token              = "123456",
@@ -36,25 +38,38 @@ namespace Cake.Gitter.Chat
         /// </code>
         /// </example>
         /// <example>
+        /// <para>Post to the Activity Feed within a Gitter Room using a custom Web Hook Url.</para>
+        /// <para>Cake task:</para>
         /// <code>
         /// Gitter.Chat.PostMessage(message:"Hello from Cake.Gitter Web Hook, messageSettings:new GitterChatMessageSettings {
         ///     IncomingWebHookUrl = "http://yourwebhookurl.net"
         /// });
         /// </code>
         /// </example>
+        /// <example>
+        /// <para>Post to the Activity Feed within a Gitter Room using a custom Web Hook Url, specifying that there has been an error.</para>
+        /// <para>Cake task:</para>
+        /// <code>
+        /// Gitter.Chat.PostMessage(message:"Hello from Cake.Gitter Web Hook, messageSettings:new GitterChatMessageSettings {
+        ///     IncomingWebHookUrl = "http://yourwebhookurl.net",
+        ///     MessageLevel = GitterMessageLevel.Error
+        /// });
+        /// </code>
+        /// </example>
         [CakeAliasCategory("Chat")]
-        public GitterChatMessageResult PostMessage(
-            string message,
-            GitterChatMessageSettings messageSettings)
+        public GitterChatMessageResult PostMessage(string message, GitterChatMessageSettings messageSettings)
         {
             if (messageSettings == null)
             {
                 throw new ArgumentNullException("messageSettings");
             }
 
-            return _context.PostMessage(
-                message,
-                messageSettings);
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                throw new NullReferenceException("Unable to send empty message.");
+            }
+
+            return _context.PostMessage(message, messageSettings);
         }
     }
 }
