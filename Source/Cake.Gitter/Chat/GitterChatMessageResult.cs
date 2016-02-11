@@ -27,7 +27,7 @@ namespace Cake.Gitter.Chat
         }
 
         /// <summary>
-        /// Indicating success or failure, <see cref="Error"/> for info on failure
+        /// Gets a value indicating whether success or failure, <see cref="Error"/> for info on failure
         /// </summary>
         public bool Ok
         {
@@ -38,7 +38,7 @@ namespace Cake.Gitter.Chat
         }
 
         /// <summary>
-        /// Timestamp of the message
+        /// Gets the Timestamp of the message
         /// </summary>
         public string TimeStamp
         {
@@ -49,7 +49,7 @@ namespace Cake.Gitter.Chat
         }
 
         /// <summary>
-        /// Error message on failure
+        /// Gets the Error message on failure
         /// </summary>
         public string Error
         {

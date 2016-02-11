@@ -13,10 +13,12 @@ var isPullRequest       = AppVeyor.Environment.PullRequest.IsPullRequest;
 var isDevelopBranch     = AppVeyor.Environment.Repository.Branch == "develop";
 var isTag               = AppVeyor.Environment.Repository.Tag.IsTag;
 var solution            = "./Source/Cake.Gitter.sln";
-var solutionPath        = "./Source/Cake.Gitter";
-var sourcePath          = "./Source";
-var binDir              = "./Source/Cake.Gitter/bin/" + configuration;
-var buildArtifacts      = "./BuildArtifacts";
+var solutionPath        = Directory("./Source/Cake.Gitter");
+var sourcePath          = Directory("./Source");
+var binDir              = Directory("./Source/Cake.Gitter/bin") + Directory(configuration);
+var objDir              = Directory("./Source/Cake.Gitter/obj") + Directory(configuration);
+var buildArtifacts      = Directory("./BuildArtifacts");
+var testResultsDir      = buildArtifacts + Directory("test-results");
 var version             = "0.2.0";
 var semVersion          = "0.2.0";
 
@@ -80,8 +82,8 @@ Task("Clean")
     .Does(() =>
 {
     Information("Cleaning {0}", solutionPath);
-    CleanDirectories(solutionPath + "/**/bin/" + configuration);
-    CleanDirectories(solutionPath + "/**/obj/" + configuration);
+    CleanDirectories(binDir);
+    CleanDirectories(objDir);
 
 	Information("Cleaning BuildArtifacts");
 	CleanDirectories(buildArtifacts);
@@ -120,6 +122,17 @@ Task("Build")
             .SetConfiguration(configuration));
 });
 
+Task("Run-Unit-Tests")
+    .IsDependentOn("Build")
+    .Does(() =>
+{
+    XUnit2("./Source/**/bin/" + configuration + "/*.Tests.dll", new XUnit2Settings {
+        OutputDirectory = testResultsDir,
+        XmlReportV1 = true,
+        NoAppDomain = true
+    });
+});
+
 Task("DupFinder")
 	.IsDependentOn("Create-BuildArtifacts-Directory")
     .Does(() =>
@@ -128,7 +141,7 @@ Task("DupFinder")
     DupFinder(solution, new DupFinderSettings() {
       ShowStats = true,
       ShowText = true,
-      OutputFile = buildArtifacts + "/_ReSharperReports/dupfinder.xml",
+      OutputFile = buildArtifacts + File("_ReSharperReports/dupfinder.xml"),
       ExcludePattern = new string[] { MakeAbsolute(File("./Source/Cake.Gitter/Include_T4Include.cs")).ToString() },
       });
 });
@@ -140,8 +153,8 @@ Task("InspectCode")
     // Run ReSharper's InspectCode
     InspectCode(solution, new InspectCodeSettings() {
       SolutionWideAnalysis = true,
-	  Profile = sourcePath + "/Cake.Gitter.sln.DotSettings",
-      OutputFile = buildArtifacts + "/_ReSharperReports/inspectcode.xml",
+      Profile = sourcePath + File("Cake.Gitter.sln.DotSettings"),
+      OutputFile = buildArtifacts + File("_ReSharperReports/inspectcode.xml"),
       });
 });
 
@@ -152,10 +165,15 @@ Task("Create-BuildArtifacts-Directory")
     {
         CreateDirectory(buildArtifacts);
     }
+
+    if (!DirectoryExists(testResultsDir))
+    {
+        CreateDirectory(testResultsDir);
+    }
 });
 
 Task("Create-NuGet-Package")
-    .IsDependentOn("Build")
+    .IsDependentOn("Run-Unit-Tests")
 	.IsDependentOn("Create-BuildArtifacts-Directory")
     .Does(() =>
 {
@@ -198,7 +216,7 @@ Task("Publish-Nuget-Package")
     }
 
     // Get the path to the package.
-    var package = buildArtifacts + "/Cake.Gitter." + semVersion + ".nupkg";
+    var package = buildArtifacts + File("./Cake.Gitter." + semVersion + ".nupkg");
 
     // Push the package.
     NuGetPush(package, new NuGetPushSettings {
