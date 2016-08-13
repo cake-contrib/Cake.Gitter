@@ -3,7 +3,8 @@
 ## Using Token
 
 ```csharp
-#addin "Cake.Slack"
+#addin "Cake.Gitter"
+
 var gitterToken         = EnvironmentVariable("GITTER_TOKEN");
 var gitterRoomId        = EnvironmentVariable("gitterRoomId");
 
@@ -42,7 +43,8 @@ This will result in a message appearing in the Gitter Room similar to the follow
 ## Using Web Hook Url
 
 ```csharp
-#addin "Cake.Slack"
+#addin "Cake.Gitter"
+
 var gitterWebHookUri    = EnvironmentVariable("gitterWebHookUri");
 try
 {
@@ -79,7 +81,8 @@ This will result in a message appearing in the Activity Feed for the Gitter Room
 *NOTE:* You can control the Gitter Message Level, either Info or Error, using the `GitterMessageLevel` property of the `GitterChatMessageSettings`.  To specify that a message should be an error, you can use the following:
 
 ```csharp
-#addin "Cake.Slack"
+#addin "Cake.Gitter"
+
 var gitterWebHookUri    = EnvironmentVariable("gitterWebHookUri");
 try
 {

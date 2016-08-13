@@ -9,28 +9,29 @@ namespace Cake.Gitter.Chat
     public sealed class GitterChatMessageSettings
     {
         /// <summary>
-        /// Gitter token used for authentication.
+        /// Gets or sets the Gitter token used for authentication.
         /// </summary>
         public string Token { get; set; }
 
         /// <summary>
-        /// Gitter Room Id.
+        /// Gets or sets the Gitter Room Id.
         /// </summary>
         public string RoomId { get; set; }
 
         /// <summary>
-        /// This can be used instead of token (https://developer.gitter.im/docs/rest-api)
+        /// Gets or sets the Gitter Incoming Web Hook Url
         /// </summary>
+        /// <remarks>This can be used instead of token (https://developer.gitter.im/docs/rest-api)</remarks>
         public string IncomingWebHookUrl { get; set; }
 
         /// <summary>
-        /// Gitter Message Level
+        /// Gets or sets the Gitter Message Level
         /// </summary>
         /// <remarks>Default is Info</remarks>
         public GitterMessageLevel MessageLevel { get; set; }
 
         /// <summary>
-        /// Optional flag for if should throw exception on failure
+        /// Gets or sets the Optional flag for if should throw exception on failure
         /// </summary>
         public bool? ThrowOnFail { get; set; }
     }
