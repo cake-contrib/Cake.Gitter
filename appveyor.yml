@@ -17,20 +17,6 @@ branches:
     - master
 
 #---------------------------------#
-#  Environment Variables          #
-#---------------------------------#
-environment:
-  MYGET_MASTER_API_KEY:
-    secure: 0TPZJG1sql+TBGDGbZlrEC8O80MAJserulZiU/8a+VTxjSgIZh/SoNhal/DeihIx
-  MYGET_DEVELOP_API_KEY:
-    secure: e0OciROS/831nZpT5AjH4oTeHurdWoouWDfw4YzD0AAONAgZTLh0Yw4slTnJT1y8
-  MYGET_MASTER_SOURCE: https://www.myget.org/F/packages_master/
-  MYGET_DEVELOP_SOURCE: https://www.myget.org/F/packages_develop/
-  NUGET_API_KEY:
-    secure: a/xbTgIAc+QGdAwANmenmrUJFG5hqB+jMyqB6y80KZYXfRHOVEB+1dB4CEyDednf
-  NUGET_SOURCE: https://nuget.org/
-
-#---------------------------------#
 #  Notifications Configuration    #
 #---------------------------------#
 notifications:
@@ -45,7 +31,7 @@ notifications:
 #---------------------------------#
 cache:
 - Source\packages -> Source\**\packages.config
-- Tools -> Tools\packages.config
+- Tools -> build.ps1
 
 #---------------------------------#
 #  Skip builds for doc changes    #
