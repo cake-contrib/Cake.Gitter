@@ -36,7 +36,7 @@ var solutionFilePath          = "./Source/Cake.Gitter.sln";
 var solutionDirectoryPath     = "./Source/Cake.Gitter";
 var title                     = "Cake.Gitter";
 var resharperSettingsFileName = "Cake.Gitter.sln.DotSettings";
-var repositoryOwner           = "gep13";
+var repositoryOwner           = "cake-build";
 var repositoryName            = "Cake.Gitter";
 var dupFinderExcludePattern   = new String[] { rootDirectoryPath + "/Source/Cake.Gitter/Include_T4Include.cs" };
 
