@@ -21,6 +21,10 @@ Cake.Gitter is an Addin for [Cake](http://cakebuild.net/) which extends it by al
 |:--:|:--:|
 |[![Build status](https://ci.appveyor.com/api/projects/status/gye76697ak6xffhg/branch/develop?svg=true)](https://ci.appveyor.com/project/cakecontrib/cake-gitter/branch/develop)|[![Build status](https://ci.appveyor.com/api/projects/status/gye76697ak6xffhg/branch/develop?svg=true)](https://ci.appveyor.com/project/cakecontrib/cake-gitter/branch/master)|
 
+## Code Coverage
+
+[![Coverage Status](https://coveralls.io/repos/github/cake-contrib/Cake.Gitter/badge.svg)](https://coveralls.io/github/cake-contrib/Cake.Gitter)
+
 ## Quick Links
 
 - [Documentation](http://cakegitter.readthedocs.org/en/develop/)
