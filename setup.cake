@@ -35,6 +35,7 @@ var sendMessageToTwitter = true;
 
 var rootDirectoryPath         = MakeAbsolute(Context.Environment.WorkingDirectory);
 var solutionFilePath          = "./Source/Cake.Gitter.sln";
+var sourceDirectoryPath       = "./Source";
 var solutionDirectoryPath     = "./Source/Cake.Gitter";
 var title                     = "Cake.Gitter";
 var resharperSettingsFileName = "Cake.Gitter.sln.DotSettings";
@@ -42,7 +43,11 @@ var repositoryOwner           = "cake-contrib";
 var repositoryName            = "Cake.Gitter";
 var appVeyorAccountName       = "cakecontrib";
 var appVeyorProjectSlug       = "cake-gitter";
+
 var dupFinderExcludePattern   = new String[] { rootDirectoryPath + "/Source/Cake.Gitter/Include_T4Include.cs" };
+var testCoverageFilter = "+[*]* -[xunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]* ";
+var testCoverageExcludeByAttribute = "*.ExcludeFromCodeCoverage*";
+var testCoverageExcludeByFile = "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs";
 
 ///////////////////////////////////////////////////////////////////////////////
 // CAKE FILES TO LOAD IN

@@ -10,12 +10,12 @@
     <licenseUrl>https://github.com/cake-contrib/Cake.Gitter/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/cake-contrib/Cake.Gitter/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright (c) gep13</copyright>
+    <copyright>Copyright (c) Cake Contributions 2016 - Present</copyright>
     <tags>Cake, Script, Build, Gitter</tags>
   </metadata>
   <files>
-    <file src="Cake.Gitter.dll" />
-    <file src="Cake.Gitter.pdb" />
-    <file src="Cake.Gitter.xml" />
+    <file src="Cake.Gitter.dll" target="lib\net45" />
+    <file src="Cake.Gitter.pdb" target="lib\net45" />
+    <file src="Cake.Gitter.xml" target="lib\net45" />
   </files>
 </package>
