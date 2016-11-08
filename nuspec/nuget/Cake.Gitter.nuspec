@@ -4,18 +4,18 @@
     <id>Cake.Gitter</id>
     <version>0.0.0</version>
     <authors>gep13</authors>
-    <owners>gep13</owners>
+    <owners>gep13, cake-contrib</owners>
     <description>Cake Gitter AddIn.</description>
     <summary>Cake AddIn that extends Cake with ability to send messages to Gitter.</summary>
-    <licenseUrl>https://github.com/gep13/Cake.Gitter/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/gep13/Cake.Gitter/</projectUrl>
+    <licenseUrl>https://github.com/cake-contrib/Cake.Gitter/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/cake-contrib/Cake.Gitter/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright (c) gep13</copyright>
+    <copyright>Copyright (c) Cake Contributions 2016 - Present</copyright>
     <tags>Cake, Script, Build, Gitter</tags>
   </metadata>
   <files>
-    <file src="Cake.Gitter.dll" />
-    <file src="Cake.Gitter.pdb" />
-    <file src="Cake.Gitter.xml" />
+    <file src="Cake.Gitter.dll" target="lib\net45" />
+    <file src="Cake.Gitter.pdb" target="lib\net45" />
+    <file src="Cake.Gitter.xml" target="lib\net45" />
   </files>
 </package>
