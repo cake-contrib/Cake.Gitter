@@ -34,24 +34,24 @@ var searchModule = function() {
 
     a({
         id:0,
-        title:"GitterChatMessageResult",
-        content:"GitterChatMessageResult",
+        title:"GitterAliases",
+        content:"GitterAliases",
         description:'',
         tags:''
     });
 
     a({
         id:1,
-        title:"GitterProvider",
-        content:"GitterProvider",
+        title:"GitterChatProvider",
+        content:"GitterChatProvider",
         description:'',
         tags:''
     });
 
     a({
         id:2,
-        title:"GitterChatProvider",
-        content:"GitterChatProvider",
+        title:"GitterChatMessageResult",
+        content:"GitterChatMessageResult",
         description:'',
         tags:''
     });
@@ -66,8 +66,8 @@ var searchModule = function() {
 
     a({
         id:4,
-        title:"GitterAliases",
-        content:"GitterAliases",
+        title:"GitterProvider",
+        content:"GitterProvider",
         description:'',
         tags:''
     });
@@ -81,14 +81,8 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageResult',
-        title:"GitterChatMessageResult",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterProvider',
-        title:"GitterProvider",
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterAliases',
+        title:"GitterAliases",
         description:""
     });
 
@@ -99,14 +93,20 @@ var searchModule = function() {
     });
 
     y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageResult',
+        title:"GitterChatMessageResult",
+        description:""
+    });
+
+    y({
         url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
         title:"GitterChatMessageSettings",
         description:""
     });
 
     y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterAliases',
-        title:"GitterAliases",
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterProvider',
+        title:"GitterProvider",
         description:""
     });
 
