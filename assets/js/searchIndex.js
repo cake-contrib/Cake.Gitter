@@ -1,0 +1,126 @@
+
+var camelCaseTokenizer = function (obj) {
+    var previous = '';
+    return obj.toString().trim().split(/[\s\-]+|(?=[A-Z])/).reduce(function(acc, cur) {
+        var current = cur.toLowerCase();
+        if(acc.length === 0) {
+            previous = current;
+            return acc.concat(current);
+        }
+        previous = previous.concat(current);
+        return acc.concat([current, previous]);
+    }, []);
+}
+lunr.tokenizer.registerFunction(camelCaseTokenizer, 'camelCaseTokenizer')
+var searchModule = function() {
+    var idMap = [];
+    function y(e) { 
+        idMap.push(e); 
+    }
+    var idx = lunr(function() {
+        this.field('title', { boost: 10 });
+        this.field('content');
+        this.field('description', { boost: 5 });
+        this.field('tags', { boost: 50 });
+        this.ref('id');
+        this.tokenizer(camelCaseTokenizer);
+
+        this.pipeline.remove(lunr.stopWordFilter);
+        this.pipeline.remove(lunr.stemmer);
+    });
+    function a(e) { 
+        idx.add(e); 
+    }
+
+    a({
+        id:0,
+        title:"GitterProvider",
+        content:"GitterProvider",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:1,
+        title:"GitterChatMessageResult",
+        content:"GitterChatMessageResult",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:2,
+        title:"GitterChatMessageSettings",
+        content:"GitterChatMessageSettings",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:3,
+        title:"GitterAliases",
+        content:"GitterAliases",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:4,
+        title:"GitterChatProvider",
+        content:"GitterChatProvider",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:5,
+        title:"GitterMessageLevel",
+        content:"GitterMessageLevel",
+        description:'',
+        tags:''
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterProvider',
+        title:"GitterProvider",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageResult',
+        title:"GitterChatMessageResult",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
+        title:"GitterChatMessageSettings",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterAliases',
+        title:"GitterAliases",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatProvider',
+        title:"GitterChatProvider",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterMessageLevel',
+        title:"GitterMessageLevel",
+        description:""
+    });
+
+    return {
+        search: function(q) {
+            return idx.search(q).map(function(i) {
+                return idMap[i.ref];
+            });
+        }
+    };
+}();
