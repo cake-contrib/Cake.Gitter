@@ -11,7 +11,6 @@ Cake.Gitter is an Addin for [Cake](http://cakebuild.net/) which extends it by al
 
 ||Stable|Pre-release|
 |:--:|:--:|:--:|
-|Docs|[![Documentation Status](https://readthedocs.org/projects/cakegitter/badge/?version=stable)](http://cakegitter.readthedocs.org/en/stable/)|[![Documentation Status](https://readthedocs.org/projects/cakegitter/badge/?version=develop)](http://cakegitter.readthedocs.org/en/develop/)|
 |GitHub Release|-|[![GitHub release](https://img.shields.io/github/release/cake-contrib/Cake.Gitter.svg)](https://github.com/cake-contrib/Cake.Gitter/releases/latest)|
 |NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.Gitter.svg)](https://www.nuget.org/packages/Cake.Gitter)|[![NuGet](https://img.shields.io/nuget/vpre/Cake.Gitter.svg)](https://www.nuget.org/packages/Cake.Gitter)|
 
@@ -27,9 +26,7 @@ Cake.Gitter is an Addin for [Cake](http://cakebuild.net/) which extends it by al
 
 ## Quick Links
 
-- [Documentation](http://cakegitter.readthedocs.org/en/develop/)
-- [Usage](http://cakegitter.readthedocs.org/en/develop/usage/)
-- [Required Information](http://cakegitter.readthedocs.org/en/develop/requiredinformation/)
+- [Documentation](https://cake-contrib.github.io/Cake.Gitter/))
 
 ## Chat Room
 Come join in the conversation about Cake.Gitter in our Gitter Chat Room

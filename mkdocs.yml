@@ -1,8 +1,0 @@
-site_name: Cake.Gitter
-theme: readthedocs
-repo_url: https://github.com/cake-contrib/Cake.Gitter
-
-pages:
-- Home: index.md
-- Usage: usage.md
-- Required Information: requiredinformation.md
