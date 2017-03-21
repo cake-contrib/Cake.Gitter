@@ -9,7 +9,7 @@ Cake.Gitter is an Addin for [Cake](http://cakebuild.net/) which extends it by al
 
 ## Information
 
-||Stable|Pre-release|
+| |Stable|Pre-release|
 |:--:|:--:|:--:|
 |GitHub Release|-|[![GitHub release](https://img.shields.io/github/release/cake-contrib/Cake.Gitter.svg)](https://github.com/cake-contrib/Cake.Gitter/releases/latest)|
 |NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.Gitter.svg)](https://www.nuget.org/packages/Cake.Gitter)|[![NuGet](https://img.shields.io/nuget/vpre/Cake.Gitter.svg)](https://www.nuget.org/packages/Cake.Gitter)|
