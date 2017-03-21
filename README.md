@@ -26,7 +26,7 @@ Cake.Gitter is an Addin for [Cake](http://cakebuild.net/) which extends it by al
 
 ## Quick Links
 
-- [Documentation](https://cake-contrib.github.io/Cake.Gitter/))
+- [Documentation](https://cake-contrib.github.io/Cake.Gitter/)
 
 ## Chat Room
 Come join in the conversation about Cake.Gitter in our Gitter Chat Room
