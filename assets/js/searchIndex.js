@@ -34,16 +34,16 @@ var searchModule = function() {
 
     a({
         id:0,
-        title:"GitterMessageLevel",
-        content:"GitterMessageLevel",
+        title:"GitterChatMessageSettings",
+        content:"GitterChatMessageSettings",
         description:'',
         tags:''
     });
 
     a({
         id:1,
-        title:"GitterChatMessageResult",
-        content:"GitterChatMessageResult",
+        title:"GitterProvider",
+        content:"GitterProvider",
         description:'',
         tags:''
     });
@@ -58,6 +58,14 @@ var searchModule = function() {
 
     a({
         id:3,
+        title:"GitterMessageLevel",
+        content:"GitterMessageLevel",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:4,
         title:"GitterAliases",
         content:"GitterAliases",
         description:'',
@@ -65,42 +73,16 @@ var searchModule = function() {
     });
 
     a({
-        id:4,
-        title:"GitterProvider",
-        content:"GitterProvider",
-        description:'',
-        tags:''
-    });
-
-    a({
         id:5,
-        title:"GitterChatMessageSettings",
-        content:"GitterChatMessageSettings",
+        title:"GitterChatMessageResult",
+        content:"GitterChatMessageResult",
         description:'',
         tags:''
     });
 
     y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterMessageLevel',
-        title:"GitterMessageLevel",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageResult',
-        title:"GitterChatMessageResult",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatProvider',
-        title:"GitterChatProvider",
-        description:""
-    });
-
-    y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterAliases',
-        title:"GitterAliases",
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
+        title:"GitterChatMessageSettings",
         description:""
     });
 
@@ -111,8 +93,26 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
-        title:"GitterChatMessageSettings",
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatProvider',
+        title:"GitterChatProvider",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterMessageLevel',
+        title:"GitterMessageLevel",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter/GitterAliases',
+        title:"GitterAliases",
+        description:""
+    });
+
+    y({
+        url:'/Cake.Gitter/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageResult',
+        title:"GitterChatMessageResult",
         description:""
     });
 
