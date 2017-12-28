@@ -2,7 +2,7 @@
 using System.Linq;
 using Cake.Common.Diagnostics;
 using Cake.Core;
-using GitterSharp.Model;
+using GitterSharp.Model.Webhook;
 using GitterSharp.Services;
 
 namespace Cake.Gitter.Chat
