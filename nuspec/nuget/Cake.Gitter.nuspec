@@ -15,10 +15,8 @@
     <tags>Cake, Script, Build, Gitter</tags>
   </metadata>
   <files>
-    <file src="net46\Cake.Gitter.dll" target="lib\net46" />
-    <file src="net46\Cake.Gitter.pdb" target="lib\net46" />
-    <file src="net46\Cake.Gitter.xml" target="lib\net46" />
-    <file src="netstandard2.0\Cake.Gitter.dll" target="lib/netstandard2.0" /> 
+    <file src="netstandard2.0\Cake.Gitter.dll" target="lib/netstandard2.0" />
     <file src="netstandard2.0\Cake.Gitter.pdb" target="lib/netstandard2.0" />
+    <file src="netstandard2.0\Cake.Gitter.xml" target="lib/netstandard2.0" />
   </files>
 </package>
