@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Cake.Common.Diagnostics;
 using Cake.Core;
-using GitterSharp.Model.Webhook;
-using GitterSharp.Services;
+using Cake.Gitter.LitJson;
 
 namespace Cake.Gitter.Chat
 {
@@ -24,11 +27,11 @@ namespace Cake.Gitter.Chat
             GitterChatMessageResult result;
             if (!string.IsNullOrWhiteSpace(messageSettings.IncomingWebHookUrl))
             {
-                result = PostToIncomingWebHook(context, message, messageSettings);
+                result = PostToIncomingWebHook(context, message, messageSettings).Result;
             }
             else
             {
-                result = context.PostToChatApi(message, messageSettings);
+                result = context.PostToChatApi(message, messageSettings).Result;
             }
 
             if (!result.Ok && messageSettings.ThrowOnFail == true)
@@ -39,35 +42,76 @@ namespace Cake.Gitter.Chat
             return result;
         }
 
-        private static GitterChatMessageResult PostToIncomingWebHook(ICakeContext context, string message, GitterChatMessageSettings messageSettings)
+        private static async Task<GitterChatMessageResult> PostToIncomingWebHook(ICakeContext context, string message, GitterChatMessageSettings messageSettings)
         {
             context.Verbose("Posting to incoming webhook {0}...", string.Concat(messageSettings.IncomingWebHookUrl.TrimEnd('/').Reverse().SkipWhile(c => c != '/').Reverse()));
 
-            var gitterWebHookService = new WebhookService();
-            var result = gitterWebHookService.PostAsync(messageSettings.IncomingWebHookUrl, message, messageSettings.MessageLevel == GitterMessageLevel.Error ? MessageLevel.Error : MessageLevel.Info);
+            var httpClient = new HttpClient();
 
-            var parsedResult = new GitterChatMessageResult(result.Result, DateTime.UtcNow.ToString("u"), string.Empty);
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/json");
+
+            var content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    {"message", message},
+                    {"level", messageSettings.MessageLevel == GitterMessageLevel.Error ? "error" : "info"}
+                });
+
+            var httpResponse = await httpClient.PostAsync(new Uri(messageSettings.IncomingWebHookUrl), content);
+            var response = await httpResponse.Content.ReadAsStringAsync();
+            var result = JsonMapper.ToObject(response);
+
+            var parsedResult = new GitterChatMessageResult(
+                httpResponse.IsSuccessStatusCode,
+                DateTime.UtcNow.ToString("u"),
+                string.Empty);
 
             context.Debug("Result parsed: {0}", parsedResult);
 
             return parsedResult;
         }
 
-        private static GitterChatMessageResult PostToChatApi(this ICakeContext context, string message, GitterChatMessageSettings messageSettings)
+        private static async Task<GitterChatMessageResult> PostToChatApi(this ICakeContext context, string message, GitterChatMessageSettings messageSettings)
         {
             if (string.IsNullOrWhiteSpace(messageSettings.Token))
             {
                 throw new NullReferenceException("No authorization token provided.");
             }
 
-            var gitterApiService = new GitterApiService(messageSettings.Token);
-            var messageResponse = gitterApiService.SendMessageAsync(messageSettings.RoomId, message);
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var parsedResult = new GitterChatMessageResult(!string.IsNullOrWhiteSpace(messageResponse.Result.Id), messageResponse.Result.SentDate.ToString("u"), string.Empty);
+            if (!string.IsNullOrWhiteSpace(messageSettings.Token))
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", messageSettings.Token);
+            }
+
+            string url = $"https://api.gitter.im/v1/rooms/{messageSettings.RoomId}/chatMessages";
+
+            var content = new FormUrlEncodedContent(new Dictionary<string, string>
+            {
+                {"text", message}
+            });
+
+            var httpResponse = await httpClient.PostAsync(url, content);
+            var response = await httpResponse.Content.ReadAsStringAsync();
+
+            var result = JsonMapper.ToObject(response);
+            var parsedResult = new GitterChatMessageResult(
+                httpResponse.IsSuccessStatusCode,
+                result.GetString("sent"),
+                string.Empty);
 
             context.Debug("Result parsed: {0}", parsedResult);
 
             return parsedResult;
+        }
+
+        private static string GetString(this JsonData data, string key)
+        {
+            return (data != null && data.Keys.Contains(key))
+                ? (string)data[key]
+                : null;
         }
     }
 }
