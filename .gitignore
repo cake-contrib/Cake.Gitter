@@ -198,3 +198,6 @@ FakesAssemblies/
 # Build Related
 tools/
 BuildArtifacts/
+
+# Mac
+.DS_Store
