@@ -7,7 +7,8 @@
     <owners>gep13, cake-contrib</owners>
     <description>Cake Gitter AddIn.</description>
     <summary>Cake AddIn that extends Cake with ability to send messages to Gitter.</summary>
-    <licenseUrl>https://github.com/cake-contrib/Cake.Gitter/blob/master/LICENSE</licenseUrl>
+    <license type="expression">MIT</license>
+    <repository type="git" url="https://github.com/cake-contrib/Cake.Gitter"/>
     <projectUrl>https://github.com/cake-contrib/Cake.Gitter/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
