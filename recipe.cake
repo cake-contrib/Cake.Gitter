@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Recipe&version=1.0.0
+#load nuget:?package=Cake.Recipe&version=1.1.0
 
 Environment.SetVariableNames();
 
@@ -9,7 +9,8 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Gitter",
                             appVeyorAccountName: "cakecontrib",
-                            shouldRunGitVersion: true);
+                            shouldRunGitVersion: true,
+                            shouldPublishToMyGetWithApiKey: true);
 
 BuildParameters.PrintParameters(Context);
 
