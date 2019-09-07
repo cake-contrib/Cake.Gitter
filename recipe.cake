@@ -1,4 +1,4 @@
-#load nuget:https://www.myget.org/F/cake-contrib/api/v2?package=Cake.Recipe&prerelease&version=1.1.0-unstable0004
+#load nuget:https://www.myget.org/F/cake-contrib/api/v2?package=Cake.Recipe&prerelease&version=1.1.0-unstable0006
 
 Environment.SetVariableNames();
 
