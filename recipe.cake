@@ -1,4 +1,4 @@
-#load nuget:https://www.myget.org/F/cake-contrib/api/v2?package=Cake.Recipe&prerelease&version=1.1.0-unstable0007
+#load nuget:?package=Cake.Recipe&version=1.1.0
 
 Environment.SetVariableNames();
 
@@ -10,7 +10,7 @@ BuildParameters.SetParameters(context: Context,
                             repositoryName: "Cake.Gitter",
                             appVeyorAccountName: "cakecontrib",
                             shouldRunGitVersion: true,
-                            shouldPublishToMyGetWithApiKey: false);
+                            shouldPublishToMyGetWithApiKey: true);
 
 BuildParameters.PrintParameters(Context);
 
