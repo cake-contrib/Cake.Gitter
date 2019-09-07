@@ -10,7 +10,7 @@ BuildParameters.SetParameters(context: Context,
                             repositoryName: "Cake.Gitter",
                             appVeyorAccountName: "cakecontrib",
                             shouldRunGitVersion: true,
-                            shouldPublishToMyGetWithApiKey: true);
+                            shouldPublishToMyGetWithApiKey: false);
 
 BuildParameters.PrintParameters(Context);
 
