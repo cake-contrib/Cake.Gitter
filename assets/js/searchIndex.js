@@ -53,20 +53,6 @@ var searchModule = function() {
     a(
         {
             id:1,
-            title:"GitterChatMessageSettings",
-            content:"GitterChatMessageSettings",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
-            title:"GitterChatMessageSettings",
-            description:""
-        }
-    );
-    a(
-        {
-            id:2,
             title:"GitterProvider",
             content:"GitterProvider",
             description:'',
@@ -80,7 +66,35 @@ var searchModule = function() {
     );
     a(
         {
+            id:2,
+            title:"GitterAliases",
+            content:"GitterAliases",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Gitter/api/Cake.Gitter/GitterAliases',
+            title:"GitterAliases",
+            description:""
+        }
+    );
+    a(
+        {
             id:3,
+            title:"GitterChatMessageSettings",
+            content:"GitterChatMessageSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
+            title:"GitterChatMessageSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:4,
             title:"GitterChatMessageResult",
             content:"GitterChatMessageResult",
             description:'',
@@ -94,7 +108,7 @@ var searchModule = function() {
     );
     a(
         {
-            id:4,
+            id:5,
             title:"GitterMessageLevel",
             content:"GitterMessageLevel",
             description:'',
@@ -103,20 +117,6 @@ var searchModule = function() {
         {
             url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterMessageLevel',
             title:"GitterMessageLevel",
-            description:""
-        }
-    );
-    a(
-        {
-            id:5,
-            title:"GitterAliases",
-            content:"GitterAliases",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Gitter/api/Cake.Gitter/GitterAliases',
-            title:"GitterAliases",
             description:""
         }
     );
