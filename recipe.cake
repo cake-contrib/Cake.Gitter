@@ -9,7 +9,8 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Gitter",
                             appVeyorAccountName: "cakecontrib",
-                            shouldRunDupFinder: false);
+                            shouldRunDupFinder: false,
+                            shouldRunDotNetCorePack: true);
 
 BuildParameters.PrintParameters(Context);
 
