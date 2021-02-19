@@ -39,6 +39,20 @@ var searchModule = function() {
     a(
         {
             id:0,
+            title:"GitterChatMessageSettings",
+            content:"GitterChatMessageSettings",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
+            title:"GitterChatMessageSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:1,
             title:"GitterChatProvider",
             content:"GitterChatProvider",
             description:'',
@@ -47,20 +61,6 @@ var searchModule = function() {
         {
             url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatProvider',
             title:"GitterChatProvider",
-            description:""
-        }
-    );
-    a(
-        {
-            id:1,
-            title:"GitterProvider",
-            content:"GitterProvider",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Gitter/api/Cake.Gitter/GitterProvider',
-            title:"GitterProvider",
             description:""
         }
     );
@@ -81,34 +81,20 @@ var searchModule = function() {
     a(
         {
             id:3,
-            title:"GitterChatMessageSettings",
-            content:"GitterChatMessageSettings",
+            title:"GitterProvider",
+            content:"GitterProvider",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageSettings',
-            title:"GitterChatMessageSettings",
+            url:'/Cake.Gitter/api/Cake.Gitter/GitterProvider',
+            title:"GitterProvider",
             description:""
         }
     );
     a(
         {
             id:4,
-            title:"GitterChatMessageResult",
-            content:"GitterChatMessageResult",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageResult',
-            title:"GitterChatMessageResult",
-            description:""
-        }
-    );
-    a(
-        {
-            id:5,
             title:"GitterMessageLevel",
             content:"GitterMessageLevel",
             description:'',
@@ -117,6 +103,20 @@ var searchModule = function() {
         {
             url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterMessageLevel',
             title:"GitterMessageLevel",
+            description:""
+        }
+    );
+    a(
+        {
+            id:5,
+            title:"GitterChatMessageResult",
+            content:"GitterChatMessageResult",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Gitter/api/Cake.Gitter.Chat/GitterChatMessageResult',
+            title:"GitterChatMessageResult",
             description:""
         }
     );
