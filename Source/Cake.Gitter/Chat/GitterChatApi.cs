@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Cake.Common.Diagnostics;
 using Cake.Core;
+using Cake.Core.Annotations;
 using Cake.Gitter.LitJson;
 
 namespace Cake.Gitter.Chat
@@ -22,6 +23,7 @@ namespace Cake.Gitter.Chat
         /// <param name="message">The message to be sent</param>
         /// <param name="messageSettings">The settings to be used when sending the message</param>
         /// <returns>An instance of <see cref="GitterChatMessageResult"/> indicating success/failure</returns>
+        [CakeMethodAlias]
         internal static GitterChatMessageResult PostMessage(this ICakeContext context, string message, GitterChatMessageSettings messageSettings)
         {
             GitterChatMessageResult result;
@@ -71,6 +73,7 @@ namespace Cake.Gitter.Chat
             return parsedResult;
         }
 
+        [CakeMethodAlias]
         private static async Task<GitterChatMessageResult> PostToChatApi(this ICakeContext context, string message, GitterChatMessageSettings messageSettings)
         {
             if (string.IsNullOrWhiteSpace(messageSettings.Token))
