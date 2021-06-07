@@ -17,8 +17,6 @@
       <Authors>Gary Ewan Park</Authors>
       <Copyright>Copyright © $(FullYear) — Cake Contributions</Copyright>
       <Description>Cake AddIn that extends Cake with ability to send messages to Gitter.</Description>
-      <PackageIcon>icon.png</PackageIcon>
-      <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <PackageProjectUrl>https://github.com/cake-contrib/Home</PackageProjectUrl>
       <PackageTags>cake;script;build;gitter;cake-addin</PackageTags>
