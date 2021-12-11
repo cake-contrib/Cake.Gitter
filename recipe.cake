@@ -23,4 +23,6 @@ ToolSettings.SetToolSettings(context: Context,
                             testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
                             testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
 
+ToolSettings.SetToolPreprocessorDirectives(reSharperTools: "#tool nuget:?package=JetBrains.ReSharper.CommandLineTools&version=2021.3.1");
+
 Build.RunDotNetCore();
