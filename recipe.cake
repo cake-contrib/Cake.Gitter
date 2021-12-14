@@ -10,6 +10,7 @@ BuildParameters.SetParameters(context: Context,
                             repositoryName: "Cake.Gitter",
                             appVeyorAccountName: "cakecontrib",
                             shouldRunDupFinder: false,
+                            shouldRunInspectCode:!AppVeyor.IsRunningOnAppVeyor,
                             shouldRunDotNetCorePack: true,
                             preferredBuildProviderType: BuildProviderType.GitHubActions,
                             shouldGenerateDocumentation: false);
