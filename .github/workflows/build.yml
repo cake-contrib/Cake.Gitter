@@ -61,7 +61,7 @@ jobs:
         uses: actions/setup-dotnet@v1
 
       - name: Cache Tools
-        uses: actions/cache@v2
+        uses: actions/cache@v3.0.10
         with:
           path: tools
           key: ${{ runner.os }}-tools-${{ hashFiles('recipe.cake') }}
